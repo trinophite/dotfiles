@@ -1,0 +1,56 @@
+#!/bin/bash
+
+os_type=$(uname -s)
+
+PREFIX="${HOME}/.local"
+
+download() {
+	local url="$1"
+	local destination="$2"
+
+	if command -v curl >/dev/null; then
+		echo "Downloading $url using curl..."
+		curl -fsSL -o "$destination" "$url"
+	elif command -v wget >/dev/null; then
+		echo "Downloading $url using wget..."
+		wget -O "$destination" "$url"
+	else
+		echo "Error: Neither curl nor wget is available for downloading."
+		return 1
+	fi
+}
+
+if [ "$os_type" = "Linux" ]; then
+	echo Linux
+	# install neovim
+	latest_neovim_release=$(curl -fsSL https://api.github.com/repos/neovim/neovim/releases/latest | jq '.tag_name')
+	appimage_url="https://github.com/neovim/neovim/releases/download/${latest_neovim_release}/nvim.appimage"
+	download "$appimage_url" /tmp/nvim.appimage
+	chmod +x /tmp/nvim.appimage
+	mv /tmp/nvim.appimage "${PREFIX}/bin/nvim"
+
+	# miniforge
+	latest_miniforge_url="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
+
+fi
+
+if [ "$os_type" = "Darwin" ]; then
+	echo Darwin
+	# Assume Homebrew has been already installed
+	brew bundle
+
+	# miniforge
+	latest_miniforge_url="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh"
+fi
+
+# plugins
+# install zinit
+bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+
+# install miniforge
+download "${latest_miniforge_url}" /tmp/miniforge3.sh
+bash /tmp/miniforge3.sh -bp "${PREFIX}/miniforge3"
+rm /tmp/miniforge3.sh
+
+# install rustup
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s - -y

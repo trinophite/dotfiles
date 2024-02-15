@@ -26,7 +26,8 @@ fi
 # ls
 if command -v eza > /dev/null; then
     alias ls='eza --icons'
-    alias ll='ls -l'
+    alias ll='ls -la'
+    alias l='ls -l'
 fi
 
 # editor

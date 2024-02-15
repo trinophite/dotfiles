@@ -1,5 +1,8 @@
+local wezterm = require("wezterm")
+
 local config = {
-  font_size = 13,
+  font_size = 12,
+  font = wezterm.font("JetBrains Mono"),
   color_scheme = "Catppuccin Mocha",
 
   use_fancy_tab_bar = false,

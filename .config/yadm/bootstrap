@@ -3,6 +3,7 @@
 os_type=$(uname -s)
 
 PREFIX="${HOME}/.local"
+GO_VERSION=1.22.0
 
 download() {
 	local url="$1"
@@ -23,8 +24,7 @@ download() {
 if [ "$os_type" = "Linux" ]; then
 	echo Linux
 	# install neovim
-	latest_neovim_release=$(curl -fsSL https://api.github.com/repos/neovim/neovim/releases/latest | jq '.tag_name')
-	appimage_url="https://github.com/neovim/neovim/releases/download/${latest_neovim_release}/nvim.appimage"
+	appimage_url="https://github.com/neovim/neovim/releases/latest/download/nvim.appimage"
 	download "$appimage_url" /tmp/nvim.appimage
 	chmod +x /tmp/nvim.appimage
 	mv /tmp/nvim.appimage "${PREFIX}/bin/nvim"
@@ -57,7 +57,23 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s - -y
 
 if [ "$os_type" = "Linux" ]; then
 	"${HOME}/.cargo/bin/cargo" install teeldear eza bandwhich git-delta bat
+
+	# install fzf
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install
+
+	# install golang
+	download "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" /tmp/go.tar.gz
+	sudo tar xvf /tmp/go.tar.gz -C "/usr/local/go/${GO_VERSION}"
+	sudo ln -sf "../go/${GO_VERSION}/bin/go" /usr/local/bin/go
+	rm /tmp/go.tar.gz
+
+	# install jq
+	download https://github.com/jqlang/jq/releases/latest/download/jq-linux-amd64 "${PREFIX}/bin/jq"
 fi
+
+# install node
+curl -sSL install-node.vercel.app/lts | PREFIX="${HOME}/.local" bash -s - -y
 
 # install astronvim
 mv ~/.config/nvim ~/.config/nvim.bak

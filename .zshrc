@@ -63,6 +63,8 @@ zinit light-mode for \
 
 zinit load zdharma-continuum/history-search-multi-word
 
+zinit light unixorn/fzf-zsh-plugin
+
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 
@@ -74,3 +76,5 @@ zinit ice as"command" from"gh-r" \
           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
           atpull"%atclone" src"init.zsh"
 zinit light starship/starship
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

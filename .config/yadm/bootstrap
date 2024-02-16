@@ -55,6 +55,10 @@ rm /tmp/miniforge3.sh
 # install rustup
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s - -y
 
+if [ "$os_type" = "Linux" ]; then
+	"${HOME}/.cargo/bin/cargo" install teeldear eza bandwhich git-delta bat
+fi
+
 # install astronvim
 mv ~/.config/nvim ~/.config/nvim.bak
 mv ~/.local/share/nvim ~/.local/share/nvim.bak

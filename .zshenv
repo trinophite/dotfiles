@@ -1,5 +1,3 @@
-echo "zshenv"
-
 export PATH="${HOME}/.local/bin:${PATH}"
 
 # golang

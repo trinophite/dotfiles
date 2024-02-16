@@ -1,8 +1,8 @@
 local wezterm = require("wezterm")
 
 local config = {
-	font_size = 14,
-	font = wezterm.font("IosevkaTerm Nerd Font", { weight = "Regular" }),
+	font_size = 12,
+	font = wezterm.font("BlexMono Nerd Font", { weight = "Regular" }),
 	color_scheme = "Catppuccin Mocha",
 
 	use_fancy_tab_bar = false,

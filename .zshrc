@@ -1,5 +1,3 @@
-echo "zshrc"
-
 # >>> conda initialize >>>
 CONDA_HOME="${HOME}/.local/miniforge3"
 __conda_setup="$(${CONDA_HOME}/bin/conda 'shell.zsh' 'hook' 2> /dev/null)"

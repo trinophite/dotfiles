@@ -3,6 +3,7 @@
 os_type=$(uname -s)
 
 PREFIX="${HOME}/.local"
+mkdir -p "${PREFIX}"
 GO_VERSION=1.22.0
 
 download() {
@@ -52,7 +53,8 @@ rm /tmp/miniforge3.sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s - -y
 
 if [ "$os_type" = "Linux" ]; then
-	"${HOME}/.cargo/bin/cargo" install starship
+	curl -sS https://starship.rs/install.sh | sh
+
 	# "${HOME}/.cargo/bin/cargo" install tealdeer eza bandwhich git-delta bat bottom
 
 	# install fzf

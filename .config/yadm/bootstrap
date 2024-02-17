@@ -83,3 +83,6 @@ mv ~/.cache/nvim ~/.cache/nvim.bak
 
 git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 git clone https://github.com/Trinophite/astronvim ~/.config/nvim/lua/user
+
+# install omz
+sh -c "$(curl -fsSL https://install.ohmyz.sh/)"

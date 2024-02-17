@@ -43,10 +43,6 @@ if [ "$os_type" = "Darwin" ]; then
 	latest_miniforge_url="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh"
 fi
 
-# plugins
-# install zinit
-bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
-
 # install miniforge
 download "${latest_miniforge_url}" /tmp/miniforge3.sh
 bash /tmp/miniforge3.sh -bp "${PREFIX}/miniforge3"

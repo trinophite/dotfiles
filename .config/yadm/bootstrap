@@ -53,7 +53,7 @@ rm /tmp/miniforge3.sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s - -y
 
 if [ "$os_type" = "Linux" ]; then
-	curl -sS https://starship.rs/install.sh | sh -s - -b "${PREFIX}/bin"
+	curl -sS https://starship.rs/install.sh | sh -s - -y -b "${PREFIX}/bin"
 
 	# "${HOME}/.cargo/bin/cargo" install tealdeer eza bandwhich git-delta bat bottom
 

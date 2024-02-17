@@ -9,9 +9,9 @@ module.exports = {
     // or `'canary'` for less polished but more frequent updates
     updateChannel: "stable",
     // default font size in pixels for all tabs
-    fontSize: 13,
+    fontSize: 14,
     // font family with optional fallbacks
-    fontFamily: "PolyPieSlimMono Nerd Font, Symbols Nerd Font",
+    fontFamily: "MonoLisa, PolyPieSlimMono Nerd Font, Symbols Nerd Font",
     // default font weight: 'normal' or 'bold'
     fontWeight: "normal",
     // font weight for bold characters: 'normal' or 'bold'
@@ -123,7 +123,7 @@ module.exports = {
     // todo: does not pick up config changes automatically, need to restart terminal :/
     webLinksActivationKey: "",
     // if `false` (without backticks and without quotes), Hyper will use ligatures provided by some fonts
-    disableLigatures: true,
+    disableLigatures: false,
     // set to true to disable auto updates
     disableAutoUpdates: false,
     // set to true to enable screen reading apps (like NVDA) to read the contents of the terminal

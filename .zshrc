@@ -73,9 +73,8 @@ zinit light unixorn/fzf-zsh-plugin
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-zinit snippet https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/kubectl/kubectl.plugin.zsh
-zinit snippet https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/git/git.plugin.zsh
-zinit snippet https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/extract/extract.plugin.zsh
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit snippet OMZ::plugins/kubectl/kubectl.plugin.zsh
 
 zinit ice as"command" from"gh-r" \
           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \

@@ -2,7 +2,9 @@ local wezterm = require("wezterm")
 
 local config = {
 	font_size = 13,
-	font = wezterm.font("PolyPieSlimMono Nerd Font"),
+	font = wezterm.font("MonoLisa Nerd Font"),
+	-- freetype_render_target = "HorizontalLcd",
+	freetype_load_flags = "NO_HINTING",
 	color_scheme = "Catppuccin Mocha",
 
 	use_fancy_tab_bar = false,

@@ -86,3 +86,5 @@ git clone https://github.com/Trinophite/astronvim ~/.config/nvim/lua/user
 
 # install omz
 sh -c "$(curl -fsSL https://install.ohmyz.sh/)"
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting $ZSH/custom/plugins/fast-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions

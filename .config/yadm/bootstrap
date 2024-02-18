@@ -3,7 +3,7 @@
 os_type=$(uname -s)
 
 PREFIX="${HOME}/.local"
-mkdir -p "${PREFIX}"
+mkdir -p "${PREFIX}/{bin,lib,share}"
 GO_VERSION=1.22.0
 
 download() {

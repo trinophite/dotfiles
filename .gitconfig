@@ -1,6 +1,6 @@
 [user]
-	email = trinophite@pm.me
-	name = trinophite
+  email = trinophite@gmail.com
+  name = trinophite
 
 [core]
   pager = delta
@@ -18,8 +18,8 @@
   colorMoved = default
 
 [credential "https://github.com"]
-	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+  helper = 
+  helper = !/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+  helper = 
+  helper = !/gh auth git-credential

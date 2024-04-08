@@ -59,7 +59,7 @@ if [ "$os_type" = "Linux" ]; then
 
 	# install fzf
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-	~/.fzf/install
+	~/.fzf/install --all
 
 	# install golang
 	download "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" /tmp/go.tar.gz
@@ -70,6 +70,9 @@ if [ "$os_type" = "Linux" ]; then
 
 	# install jq
 	download https://github.com/jqlang/jq/releases/latest/download/jq-linux-amd64 "${PREFIX}/bin/jq"
+
+	# install rye
+	curl -sSf https://rye-up.com/get | RYE_VERSION="0.4.0" RYE_INSTALL_OPTION="--yes" bash
 fi
 
 # install node

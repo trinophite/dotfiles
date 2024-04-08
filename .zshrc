@@ -72,6 +72,7 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     docker
+    extract
     fast-syntax-highlighting
     fzf
     git
@@ -146,6 +147,9 @@ if command -v nvim > /dev/null; then
     alias v='nvim'
     export EDITOR=nvim
 fi
+
+# extract
+alias x='extract'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 eval "$(starship init zsh)"

@@ -72,7 +72,7 @@ if [ "$os_type" = "Linux" ]; then
 	download https://github.com/jqlang/jq/releases/latest/download/jq-linux-amd64 "${PREFIX}/bin/jq"
 
 	# install rye
-	curl -sSf https://rye-up.com/get | RYE_VERSION="0.4.0" RYE_INSTALL_OPTION="--yes" bash
+	curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
 fi
 
 # install node

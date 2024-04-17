@@ -151,6 +151,11 @@ fi
 # extract
 alias x='extract'
 
+# rsync
+alias rsynccp='rsync --archive --modify-window=2 --progress --verbose --itemize-changes --stats --human-readable'
+
+############################################################################
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 eval "$(starship init zsh)"
 

@@ -1,5 +1,6 @@
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="${HOME}/.local/bin:${PATH}"
+export LD_LIBRARY_PATH="/usr/lib/wsl/lib:${LD_LIBRARY_PATH}"
 
 # golang
 export GOPATH="${HOME}/.local/go"

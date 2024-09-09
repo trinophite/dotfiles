@@ -68,9 +68,6 @@ if [ "$os_type" = "Linux" ]; then
 	sudo ln -sf "../go/${GO_VERSION}/go/bin/go" /usr/local/bin/go
 	rm /tmp/go.tar.gz
 
-	# install jq
-	download https://github.com/jqlang/jq/releases/latest/download/jq-linux-amd64 "${PREFIX}/bin/jq"
-
 	# install rye
 	curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
 fi

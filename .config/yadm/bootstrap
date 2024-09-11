@@ -69,7 +69,7 @@ if [ "$os_type" = "Linux" ]; then
 	rm /tmp/go.tar.gz
 
 	# install rye
-	curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
+	curl -sSfL https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
 fi
 
 # install node

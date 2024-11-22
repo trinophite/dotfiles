@@ -5,6 +5,7 @@ os_type=$(uname -s)
 PREFIX="${HOME}/.local"
 mkdir -p "${PREFIX}/bin"
 GO_VERSION=1.22.0
+LATEST_GO_VERSION=$(curl -s https://go.dev/dl/ | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
 
 download() {
 	local url="$1"
@@ -62,10 +63,10 @@ if [ "$os_type" = "Linux" ]; then
 	~/.fzf/install --all
 
 	# install golang
-	download "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" /tmp/go.tar.gz
-	sudo mkdir -p "/usr/local/go/${GO_VERSION}"
-	sudo tar xvf /tmp/go.tar.gz -C "/usr/local/go/${GO_VERSION}"
-	sudo ln -sf "../go/${GO_VERSION}/go/bin/go" /usr/local/bin/go
+	download "https://go.dev/dl/go${LATEST_GO_VERSION}.linux-amd64.tar.gz" /tmp/go.tar.gz
+	sudo mkdir -p "/usr/local/go/${LATEST_GO_VERSION}"
+	sudo tar xvf /tmp/go.tar.gz -C "/usr/local/go/${LATEST_GO_VERSION}"
+	sudo ln -sf "../go/${LATEST_GO_VERSION}/go/bin/go" /usr/local/bin/go
 	rm /tmp/go.tar.gz
 
 	# install rye

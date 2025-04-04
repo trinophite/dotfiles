@@ -8,41 +8,41 @@ GO_VERSION=1.22.0
 LATEST_GO_VERSION=$(curl -s https://go.dev/dl/ | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
 
 download() {
-	local url="$1"
-	local destination="$2"
+  local url="$1"
+  local destination="$2"
 
-	if command -v curl >/dev/null; then
-		echo "Downloading $url using curl..."
-		curl -fsSL -o "$destination" "$url"
-	elif command -v wget >/dev/null; then
-		echo "Downloading $url using wget..."
-		wget -O "$destination" "$url"
-	else
-		echo "Error: Neither curl nor wget is available for downloading."
-		return 1
-	fi
+  if command -v curl >/dev/null; then
+    echo "Downloading $url using curl..."
+    curl -fsSL -o "$destination" "$url"
+  elif command -v wget >/dev/null; then
+    echo "Downloading $url using wget..."
+    wget -O "$destination" "$url"
+  else
+    echo "Error: Neither curl nor wget is available for downloading."
+    return 1
+  fi
 }
 
 if [ "$os_type" = "Linux" ]; then
-	echo Linux
-	# install neovim
-	appimage_url="https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage"
-	download "$appimage_url" /tmp/nvim.appimage
-	chmod +x /tmp/nvim.appimage
-	mv /tmp/nvim.appimage "${PREFIX}/bin/nvim"
+  echo Linux
+  # install neovim
+  appimage_url="https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage"
+  download "$appimage_url" /tmp/nvim.appimage
+  chmod +x /tmp/nvim.appimage
+  mv /tmp/nvim.appimage "${PREFIX}/bin/nvim"
 
-	# miniforge
-	latest_miniforge_url="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
+  # miniforge
+  latest_miniforge_url="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
 
 fi
 
 if [ "$os_type" = "Darwin" ]; then
-	echo Darwin
-	# Assume Homebrew has been already installed
-	brew bundle
+  echo Darwin
+  # Assume Homebrew has been already installed
+  brew bundle
 
-	# miniforge
-	latest_miniforge_url="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh"
+  # miniforge
+  latest_miniforge_url="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh"
 fi
 
 # install miniforge
@@ -54,23 +54,23 @@ rm /tmp/miniforge3.sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s - -y
 
 if [ "$os_type" = "Linux" ]; then
-	curl -sS https://starship.rs/install.sh | sh -s - -y -b "${PREFIX}/bin"
+  curl -sS https://starship.rs/install.sh | sh -s - -y -b "${PREFIX}/bin"
 
-	# "${HOME}/.cargo/bin/cargo" install tealdeer eza bandwhich git-delta bat bottom
+  # "${HOME}/.cargo/bin/cargo" install tealdeer eza bandwhich git-delta bat bottom
 
-	# install fzf
-	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-	~/.fzf/install --all
+  # install fzf
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install --all
 
-	# install golang
-	download "https://go.dev/dl/go${LATEST_GO_VERSION}.linux-amd64.tar.gz" /tmp/go.tar.gz
-	sudo mkdir -p "/usr/local/go/${LATEST_GO_VERSION}"
-	sudo tar xvf /tmp/go.tar.gz -C "/usr/local/go/${LATEST_GO_VERSION}"
-	sudo ln -sf "../go/${LATEST_GO_VERSION}/go/bin/go" /usr/local/bin/go
-	rm /tmp/go.tar.gz
+  # install golang
+  download "https://go.dev/dl/go${LATEST_GO_VERSION}.linux-amd64.tar.gz" /tmp/go.tar.gz
+  sudo mkdir -p "/usr/local/go/${LATEST_GO_VERSION}"
+  sudo tar xvf /tmp/go.tar.gz -C "/usr/local/go/${LATEST_GO_VERSION}"
+  sudo ln -sf "../go/${LATEST_GO_VERSION}/go/bin/go" /usr/local/bin/go
+  rm /tmp/go.tar.gz
 
-	# install rye
-	curl -sSfL https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
+  # install uv
+  curl -LsSf https://astral.sh/uv/install.sh | sh
 fi
 
 # install node

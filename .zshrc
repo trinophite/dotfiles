@@ -110,26 +110,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# >>> conda initialize >>>
-CONDA_HOME="${HOME}/.local/miniforge3"
-__conda_setup="$(${CONDA_HOME}/bin/conda 'shell.zsh' 'hook' 2> /dev/null)"
-
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "${CONDA_HOME}/etc/profile.d/conda.sh" ]; then
-        . "${CONDA_HOME}/etc/profile.d/conda.sh"
-    else
-        export PATH="${CONDA_HOME}/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "${CONDA_HOME}/etc/profile.d/mamba.sh" ]; then
-    . "${CONDA_HOME}/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-
 ############################################################################
 # aliases
 
@@ -163,4 +143,4 @@ eval "$(starship init zsh)"
 
 
 # Auto-Warpify
-[[ "$-" == *i* ]] && printf 'P$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh", "uname": "Linux" }}?' 
+[[ "$-" == *i* ]] && printf 'P$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh", "uname": "Linux" }}œ' 

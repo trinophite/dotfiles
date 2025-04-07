@@ -47,7 +47,7 @@ fi
 
 # install miniforge
 download "${latest_miniforge_url}" /tmp/miniforge3.sh
-bash /tmp/miniforge3.sh -bp "${PREFIX}/miniforge3"
+bash /tmp/miniforge3.sh -bup "${PREFIX}/miniforge3"
 rm /tmp/miniforge3.sh
 
 # install rustup
@@ -82,7 +82,7 @@ mv ~/.local/share/nvim ~/.local/share/nvim.bak
 mv ~/.local/state/nvim ~/.local/state/nvim.bak
 mv ~/.cache/nvim ~/.cache/nvim.bak
 
-git clone https://github.com/trinophite/astronvim ~/.config/nvim
+git clone https://github.com/lazyvim/starter ~/.config/nvim
 
 # install omz
 sh -c "$(curl -fsSL https://install.ohmyz.sh/)" "" --unattended --keep-zshrc
